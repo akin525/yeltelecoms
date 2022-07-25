@@ -231,8 +231,10 @@
             <!-- Sidebar navigation-->
             <nav class="sidebar-nav">
                 <ul id="sidebarnav" class="p-t-30">
+                    @if(Auth::user()->role=='admin')
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('admin/dashboard')}}" aria-expanded="false"><i class="mdi mdi-home"></i><span class="hide-menu">Switch to Admin</span></a></li>
-                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('dashboard')}}" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
+                    @endif
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('dashboard')}}" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('profile.show') }}" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">My Account</span></a></li>
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('fund')}}" aria-expanded="false"><i class="mdi mdi-wallet-membership"></i><span class="hide-menu">Fund Wallet</span></a></li>
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('airtime')}}" aria-expanded="false"><i class="mdi mdi-call-made"></i><span class="hide-menu">Buy Airtime</span></a></li>
