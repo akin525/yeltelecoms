@@ -67,11 +67,11 @@ public function index()
 
         $data =bo::orderBy('id', 'desc')->paginate(25);
         $tt = bo::count();
-        $ft = bo::where([['date', 'like', Carbon::now()->format('Y-m-d') . '%']])->count();
+        $ft = bo::where([['created_at', 'like', Carbon::now()->format('Y-m-d') . '%']])->count();
         $st = bo::where([['date', 'like', Carbon::now()->subDay()->format('Y-m-d') . '%']])->count();
         $rt = bo::where([['date', 'like', Carbon::now()->subDays(2)->format('Y-m-d') . '%']])->count();
         $amount=bo::sum('amount');
-        $am=bo::where([['date', 'LIKE', '%' . $today . '%']])->sum('amount');
+        $am=bo::where([['created_at', 'LIKE', '%' . $today . '%']])->sum('amount');
         $am1=bo::where([['date', 'like', '%'. Carbon::now()->subDay()->format('y-m-d'). '%']])->sum('amount');
         $am2=bo::where([['date', 'like', '%'. Carbon::now()->subDays(2)->format('y-m-d'). '%']])->sum('amount');
 
