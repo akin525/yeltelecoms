@@ -88,8 +88,8 @@ public function dashboard(Request $request)
         $today = Carbon::now()->format('Y-m-d');
 
 
-        $data['bill'] = bo::where([['result', '=', '1'], ['date', 'LIKE', $today . '%']])->count();
-        $data['deposit'] = deposit::where([['status', '=', '1'], ['date', 'LIKE', $today . '%']])->count();
+        $data['bill'] = bo::where([['result', '=', '1'], ['created_at', 'LIKE', $today . '%']])->count();
+        $data['deposit'] = deposit::where([['status', '=', '1'], ['created_at', 'LIKE', $today . '%']])->count();
         $data['user'] = User::where([['created_at', 'LIKE', $today . '%']])->count();
         $data['nou'] = User::where([['updated_at', 'LIKE', $today . '%']])->count();
         $data['sum_deposits'] = deposit::where([['date', 'LIKE', '%' . $today . '%']])->sum('amount');

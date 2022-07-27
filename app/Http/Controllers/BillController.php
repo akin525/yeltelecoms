@@ -119,11 +119,10 @@ class BillController extends Controller
 
 
                         $receiver = $user->email;
-                        $admin = 'admin@primedata.com.ng';
-                        $admin2 = 'primedata18@gmail.com';
+                        $admin = 'info@yellowmantelecoms.com.ng';
 
-//                        Mail::to($receiver)->send(new Emailtrans($bo));
-//                        Mail::to($admin)->send(new Emailtrans($bo));
+                        Mail::to($receiver)->send(new Emailtrans($bo));
+                        Mail::to($admin)->send(new Emailtrans($bo));
 //                        Mail::to($admin2)->send(new Emailtrans($bo));
 
                         Alert::success('Success', $am.' '.$ph);
@@ -176,11 +175,10 @@ class BillController extends Controller
 
 
                         $receiver = $user->email;
-                        $admin = 'admin@primedata.com.ng';
-                        $admin2 = 'primedata18@gmail.com';
+                        $admin = 'info@yellowmantelecoms.com.ng';
 
-//                        Mail::to($receiver)->send(new Emailtrans($bo));
-//                        Mail::to($admin)->send(new Emailtrans($bo));
+                        Mail::to($receiver)->send(new Emailtrans($bo));
+                        Mail::to($admin)->send(new Emailtrans($bo));
 //                        Mail::to($admin2)->send(new Emailtrans($bo));
 
                         Alert::success('Success', $am.' '.$ph);
