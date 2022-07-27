@@ -92,8 +92,8 @@ public function dashboard(Request $request)
         $data['deposit'] = deposit::where([['status', '=', '1'], ['created_at', 'LIKE', $today . '%']])->count();
         $data['user'] = User::where([['created_at', 'LIKE', $today . '%']])->count();
         $data['nou'] = User::where([['updated_at', 'LIKE', $today . '%']])->count();
-        $data['sum_deposits'] = deposit::where([['date', 'LIKE', '%' . $today . '%']])->sum('amount');
-        $data['sum_bill'] = bo::where([['date', 'LIKE', '%' . $today . '%']])->sum('amount');
+        $data['sum_deposits'] = deposit::where([['created_at', 'LIKE', '%' . $today . '%']])->sum('amount');
+        $data['sum_bill'] = bo::where([['created_at', 'LIKE', '%' . $today . '%']])->sum('amount');
 
         return view('admin/dashboard', compact('user',  'data', 'lock', 'totalcharge', 'pa',  'tran', 'alluser', 'totaldeposite', 'totalwallet', 'deposite', 'me', 'bil2', 'bill', 'totalrefer', 'totalprofit',  'count'));
 
