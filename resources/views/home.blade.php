@@ -10,8 +10,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="{{asset('assets/img/favicon.png')}}" rel="icon">
-  <link href="{{asset('assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+  <link href="https://yellowmantelecoms.com.ng/images/yel.png" rel="icon">
+  <link href="https://yellowmantelecoms.com.ng/images/yel.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://www.google.com/maps/place/Lagos/@6.5480551,3.2839596,11z/data=!3m1!4b1!4m5!3m4!1s0x103b8b2ae68280c1:0xdc9e87a367c3d9cb!8m2!3d6.5243793!4d3.3792057?hl=en-US" rel="stylesheet">

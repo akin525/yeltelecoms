@@ -10,7 +10,7 @@
     <!-- Meta -->
     <meta name="description" content="Yellowmantelecoms | Buy data in a few clicks to keep surfing the internet. You can buy whatever size of data plan for whichever network you desire. All plans are topped-up to your specified number in seconds.">
     <meta name="author" content="ParkerThemes">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets/images/favicon.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://yellowmantelecoms.com.ng/images/yel.png">
     <link href="{{asset('assets/libs/fullcalendar/dist/fullcalendar.min.css')}}" rel="stylesheet" />
     <link href="{{asset('assets/extra-libs/calendar/calendar.css')}}" rel="stylesheet" />
     <link href="{{asset('dist/css/style.min.css')}}" rel="stylesheet">
