@@ -110,22 +110,20 @@ $amount1=$amount - $char->charges;
 
 
 //
-                $admin= 'admin@primedata.com.ng';
-                $admin2= 'primedata18@gmail.com';
+                $admin= 'info@yellowmantelecoms.com.ng';
 
                 $receiver= $user->email;
-//                Mail::to($receiver)->send(new Emailcharges($charp ));
-//                Mail::to($admin)->send(new Emailcharges($charp ));
-//                Mail::to($admin2)->send(new Emailcharges($charp ));
+
+                Mail::to($receiver)->send(new Emailcharges($charp ));
+                Mail::to($admin)->send(new Emailcharges($charp ));
 
                 $user->wallet = $gt;
                 $user->save();
-                $admin= 'admin@primedata.com.ng';
-                $admin2= 'primedata18@gmail.com';
+                $admin= 'info@yellowmantelecoms.com.ng';
 
               $receiver= $user->email;
-//                Mail::to($receiver)->send(new Emailfund($deposit ));
-//                Mail::to($admin)->send(new Emailfund($deposit ));
+                Mail::to($receiver)->send(new Emailfund($deposit ));
+                Mail::to($admin)->send(new Emailfund($deposit ));
 //                Mail::to($admin2)->send(new Emailfund($deposit ));
 $mg= '₦'.$amount.' was successfully fund into your account';
 Alert::success('Transaction', $mg);
