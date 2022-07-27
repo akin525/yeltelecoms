@@ -5,8 +5,8 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Yellow Man Telecoms - Index</title>
-  <meta content="" name="description">
+  <title>Yellow Man Telecoms </title>
+  <meta content="Yellowmantelecoms | Buy data in a few clicks to keep surfing the internet. You can buy whatever size of data plan for whichever network you desire. All plans are topped-up to your specified number in seconds." name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
