@@ -10,33 +10,34 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="{{asset('assets/img/favicon.png')}}" rel="icon">
+  <link href="{{asset('assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://www.google.com/maps/place/Lagos/@6.5480551,3.2839596,11z/data=!3m1!4b1!4m5!3m4!1s0x103b8b2ae68280c1:0xdc9e87a367c3d9cb!8m2!3d6.5243793!4d3.3792057?hl=en-US" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="{{asset('assets/vendor/aos/aos.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
 
 </head>
 
 <body>
+@include('sweetalert::alert')
 
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center">
 
       <div class="logo me-auto">
-        <h1><a href="index.html"><img src="assets/img/logo.png" class="img-fluid" alt=""></a></h1>
+        <h1><a href="{{route('home')}}"><img src="{{asset('assets/img/logo.png')}}" class="img-fluid" alt=""></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
@@ -53,6 +54,10 @@
           <li><a class="nav-link scrollto" href="#services">Services</a></li>
           <li><a class="nav-link scrollto" href="#pricing">Pricing</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+            @if(Auth()->user())
+                <li><a class="nav-link scrollto" href="#">{{Auth::user()->name}}</a></li>
+                <li><a class="nav-link scrollto" href="{{route('logout')}}">Logout</a></li>
+            @endif
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -76,12 +81,16 @@
           <div>
             <h1>The Best Platform For Automated VTU, Databundle and Bills Services</h1>
             <h2>We makes life better for other people</h2>
-            <a href="https://app.borismobilemoney.com.ng/register" class="btn-get-started scrollto">Sign Up</a>
-            <a href="https://app.borismobilemoney.com.ng/" class="btn-get-started scrollto">Login </a>
+              @if(Auth()->user())
+                  <a href="{{route('dashboard')}}" class="btn-get-started scrollto">Dashboard</a>
+              @else
+              <a href="{{route('register')}}" class="btn-get-started scrollto">Sign Up</a>
+            <a href="{{route('login')}}" class="btn-get-started scrollto">Login </a>
+                  @endif
           </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left">
-          <img src="assets/img/hero-img.png" class="img-fluid" alt="">
+          <img src="{{asset('assets/img/hero-img.png')}}" class="img-fluid" alt="">
         </div>
       </div>
     </div>
@@ -96,7 +105,7 @@
 
         <div class="row">
           <div class="col-lg-6" data-aos="zoom-in">
-            <img src="assets/img/about.jpg" class="img-fluid" alt="">
+            <img src="{{asset('assets/img/about.jpg')}}" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 d-flex flex-column justify-contents-center" data-aos="fade-left">
             <div class="content pt-4 pt-lg-0">
@@ -158,22 +167,22 @@
             <div class="tab-content">
               <div class="tab-pane active show" id="tab-1">
                 <figure>
-                  <img src="assets/img/features-1.png" alt="" class="img-fluid">
+                  <img src="{{asset('assets/img/features-1.png')}}" alt="" class="img-fluid">
                 </figure>
               </div>
               <div class="tab-pane" id="tab-2">
                 <figure>
-                  <img src="assets/img/features-2.png" alt="" class="img-fluid">
+                  <img src="{{asset('assets/img/features-2.png')}}" alt="" class="img-fluid">
                 </figure>
               </div>
               <div class="tab-pane" id="tab-3">
                 <figure>
-                  <img src="assets/img/features-3.png" alt="" class="img-fluid">
+                  <img src="{{asset('assets/img/features-3.png')}}" alt="" class="img-fluid">
                 </figure>
               </div>
               <div class="tab-pane" id="tab-4">
                 <figure>
-                  <img src="assets/img/features-4.png" alt="" class="img-fluid">
+                  <img src="{{asset('assets/img/features-4.png')}}" alt="" class="img-fluid">
                 </figure>
               </div>
             </div>
@@ -269,49 +278,49 @@
 
           <div class="col-lg-3 col-md-4 col-xs-6">
             <div class="client-logo" data-aos="zoom-in">
-              <img src="assets/img/clients/mtn.png" class="img-fluid" alt="">
+              <img src="{{asset('assets/img/clients/mtn.png')}}" class="img-fluid" alt="">
             </div>
           </div>
 
           <div class="col-lg-3 col-md-4 col-xs-6">
             <div class="client-logo" data-aos="zoom-in" data-aos-delay="100">
-              <img src="assets/img/clients/airtel.png" class="img-fluid" alt="">
+              <img src="{{asset('assets/img/clients/airtel.png')}}" class="img-fluid" alt="">
             </div>
           </div>
 
           <div class="col-lg-3 col-md-4 col-xs-6">
             <div class="client-logo" data-aos="zoom-in" data-aos-delay="150">
-              <img src="assets/img/clients/glo.png" class="img-fluid" alt="">
+              <img src="{{asset('assets/img/clients/glo.png')}}" class="img-fluid" alt="">
             </div>
           </div>
 
           <div class="col-lg-3 col-md-4 col-xs-6">
             <div class="client-logo" data-aos="zoom-in" data-aos-delay="200">
-              <img src="assets/img/clients/9mobile.png" class="img-fluid" alt="">
+              <img src="{{asset('assets/img/clients/9mobile.png')}}" class="img-fluid" alt="">
             </div>
           </div>
 
           <div class="col-lg-3 col-md-4 col-xs-6">
             <div class="client-logo" data-aos="zoom-in" data-aos-delay="250">
-              <img src="assets/img/clients/cable-tv.png" class="img-fluid" alt="">
+              <img src="{{asset('assets/img/clients/cable-tv.png')}}" class="img-fluid" alt="">
             </div>
           </div>
 
           <div class="col-lg-3 col-md-4 col-xs-6">
             <div class="client-logo" data-aos="zoom-in" data-aos-delay="300">
-              <img src="assets/img/clients/eletricity.png" class="img-fluid" alt="">
+              <img src="{{asset('assets/img/clients/eletricity.png')}}" class="img-fluid" alt="">
             </div>
           </div>
 
           <div class="col-lg-3 col-md-4 col-xs-6">
             <div class="client-logo" data-aos="zoom-in" data-aos-delay="350">
-              <img src="assets/img/clients/ele.png" class="img-fluid" alt="">
+              <img src="{{asset('assets/img/clients/ele.png')}}" class="img-fluid" alt="">
             </div>
           </div>
 
           <div class="col-lg-3 col-md-4 col-xs-6" data-aos="zoom-in" data-aos-delay="400">
             <div class="client-logo">
-              <img src="assets/img/clients/tv.png" class="img-fluid" alt="">
+              <img src="{{asset('assets/img/clients/tv.png')}}" class="img-fluid" alt="">
             </div>
           </div>
 
@@ -334,14 +343,11 @@
           <div class="col-lg-3 col-md-6">
             <div class="box">
               <h3>MTN Data</h3>
-              <img src="assets/img/mtn-1.png" class="img-fluid" alt="">
+              <img src="{{asset('assets/img/mtn-1.png')}}" class="img-fluid" alt="">
               <ul>
-                <li><i class="bx bx-check"></i> 500mb   for   #150</li>
-                <li><i class="bx bx-check"></i> 1gb     for   #300</li>
-                <li><i class="bx bx-check"></i> 2gb   for     #600</li>
-                <li><i class="bx bx-check"></i> 3gb   for   #800</li>
-                <li><i class="bx bx-check"></i> 5gb     for   #1400</li>
-                <li><i class="bx bx-check"></i> 10gb   for     #2500</li>
+                  @foreach($mtn as $m)
+                <li><i class="bx bx-check"></i> {{$m['plan']}} for {{$m['tamount']}}</li>
+                  @endforeach
 
               </ul>
               <a href="#" class="buy-btn">Get Started</a>
@@ -351,14 +357,11 @@
           <div class="col-lg-3 col-md-6">
             <div class="box ">
               <h3>Airtel Data</h3>
-              <img src="assets/img/airtime-1.png" class="img-fluid" alt="">
+              <img src="{{asset('assets/img/airtime-1.png')}}" class="img-fluid" alt="">
               <ul>
-                <li><i class="bx bx-check"></i> 500mb   for   #300</li>
-                <li><i class="bx bx-check"></i> 1gb     for   #600</li>
-                <li><i class="bx bx-check"></i> 2gb   for     #1100</li>
-                <li><i class="bx bx-check"></i> 3gb   for   #1700</li>
-                <li><i class="bx bx-check"></i> 5gb     for   #2500</li>
-                <li><i class="bx bx-check"></i> 10gb   for     #5000</li>
+                  @foreach($airtel as $a)
+                      <li><i class="bx bx-check"></i> {{$a['plan']}} for {{$a['tamount']}}</li>
+                  @endforeach
               </ul>
               <a href="#" class="buy-btn">Get Started</a>
             </div>
@@ -367,14 +370,11 @@
           <div class="col-lg-3 col-md-6">
             <div class="box">
               <h3>Glo Data</h3>
-              <img src="assets/img/glo-1.png" class="img-fluid" alt="">
+              <img src="{{asset('assets/img/glo-1.png')}}" class="img-fluid" alt="">
               <ul>
-                <li><i class="bx bx-check"></i> 1.35gb   for   #480</li>
-                <li><i class="bx bx-check"></i> 2.9     for   #950</li>
-                <li><i class="bx bx-check"></i> 4.1gb   for     #1400</li>
-                <li><i class="bx bx-check"></i> 5.8gb   for   #1900</li>
-                <li><i class="bx bx-check"></i> 7.7gb     for   #2400</li>
-                <li><i class="bx bx-check"></i> 10gb   for     #2850</li>
+                  @foreach($glo as $g)
+                      <li><i class="bx bx-check"></i> {{$g['plan']}} for {{$g['tamount']}}</li>
+                  @endforeach
               </ul>
               <a href="#" class="buy-btn">Get Started</a>
             </div>
@@ -383,14 +383,11 @@
           <div class="col-lg-3 col-md-6">
             <div class="box">
               <h3>9mobile Data</h3>
-              <img src="assets/img/9mobile-1.png" class="img-fluid" alt="">
+              <img src="{{asset('assets/img/9mobile-1.png')}}" class="img-fluid" alt="">
               <ul>
-                <li><i class="bx bx-check"></i> 500mb   for   #250</li>
-                <li><i class="bx bx-check"></i> 1gb     for   #500</li>
-                <li><i class="bx bx-check"></i> 2gb   for     #800</li>
-                <li><i class="bx bx-check"></i> 3gb   for   #1050</li>
-                <li><i class="bx bx-check"></i> 5gb     for   #1700</li>
-                <li><i class="bx bx-check"></i> 10gb   for     #3000</li>
+                  @foreach($eti as $e)
+                      <li><i class="bx bx-check"></i> {{$e['plan']}} for {{$e['tamount']}}</li>
+                  @endforeach
               </ul>
               <a href="#" class="buy-btn">Get Started</a>
             </div>
@@ -626,15 +623,15 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="{{asset('assets/vendor/aos/aos.js')}}"></script>
+  <script src="{{asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{asset('assets/vendor/glightbox/js/glightbox.min.js')}}"></script>
+  <script src="{{asset('assets/vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
+  <script src="{{asset('assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
+  <script src="{{asset('assets/vendor/php-email-form/validate.js')}}"></script>
 
   <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <script src="{{asset('assets/js/main.js')}}"></script>
 
 </body>
 

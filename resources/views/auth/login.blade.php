@@ -20,7 +20,7 @@
                 <div id="loginform">
                     <div class="text-center p-t-20 p-b-20">
                         <center>
-                        <span class="db"><img src="{{asset('assets/images/logo-icon.png')}}" alt="logo" /></span>
+                        <span class="db"><img src="{{asset('images/yel.png')}}" alt="logo" /></span>
                             <br>
                             <h2 class="text-white logo-text"><b>YELLOWMAMTELECOMS</b></h2>
                             <br>

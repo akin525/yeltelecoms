@@ -7,10 +7,10 @@
         <meta name="description" content=" We offer instant recharge of Airtime, Databundle, CableTV (DStv, GOtv & Startimes), Electricity Bill Payment and more">
 
         <title>Yellowmantelecoms|</title>
-        <link rel="shortcut icon" href="{{asset('img/5.jpg')}}" />
+        <link rel="shortcut icon" href="{{asset('assets/img/favicon.png')}}" />
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-        <link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets/images/favicon.png')}}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets/img/favicon.png')}}">
         <!-- Custom CSS -->
         <link href="{{asset('dist/css/style.min.css')}}" rel="stylesheet">
         <!-- Scripts -->

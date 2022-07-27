@@ -17,6 +17,8 @@ use App\Http\Controllers\listdata;
 use App\Http\Controllers\RefersController;
 use App\Http\Controllers\ResellerController;
 use App\Http\Controllers\VertualController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FundController;
@@ -34,15 +36,15 @@ use App\Http\Controllers\BillController;
 |
 */
 
-Route::get('/', function () {
-    if (Auth()->user()) {
-        return redirect(route('dashboard'))
-            ->withSuccess('Signed in');
-
-    }else {
-        return view('auth.login');
-    }
-});
+//Route::get('/', function () {
+//    if (Auth()->user()) {
+//        return redirect(route('dashboard'))
+//            ->withSuccess('Signed in');
+//
+//    }else {
+//        return view('auth.login');
+//    }
+//});
 Route::post('log', [AuthController::class, 'customLogin'])->name('log');
 
 //Route::get('select', function () {
@@ -98,6 +100,7 @@ Route::get('admin', function () {
     return view('admin.login');
 
 });
+Route::get('/', [AuthController::class, 'landing'])->name('home');
 
 Route::post('cuslog', [LoginController::class, 'login'])->name('cuslog');
 

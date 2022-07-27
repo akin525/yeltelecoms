@@ -10,7 +10,7 @@
     <!-- Meta -->
     <meta name="description" content="Yellowmantelecoms | Buy data in a few clicks to keep surfing the internet. You can buy whatever size of data plan for whichever network you desire. All plans are topped-up to your specified number in seconds.">
     <meta name="author" content="ParkerThemes">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets/images/favicon.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets/img/favicon.png')}}">
     <link href="{{asset('assets/libs/fullcalendar/dist/fullcalendar.min.css')}}" rel="stylesheet" />
     <link href="{{asset('assets/extra-libs/calendar/calendar.css')}}" rel="stylesheet" />
     <link href="{{asset('dist/css/style.min.css')}}" rel="stylesheet">
@@ -69,14 +69,14 @@
                     <b class="logo-icon p-l-10">
                         <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                         <!-- Dark Logo icon -->
-                        <img src="{{asset('assets/images/logo-icon.png')}}" alt="homepage" class="light-logo" />
+                        <img width="150" src="{{asset('images/yel.png')}}" alt="homepage" class="light-logo" />
 
                     </b>
                     <!--End Logo icon -->
                     <!-- Logo text -->
                     <span class="logo-text">
                              <!-- dark Logo text -->
-                        <h6 class="light-logo">YELLOWMANTELECOMS</h6>
+                        <h6 class="light-logo"></h6>
 
                         </span>
                     <!-- Logo icon -->
