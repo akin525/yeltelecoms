@@ -298,6 +298,31 @@
             <!--Custom JavaScript -->
             <script src="{{asset('dist/js/custom.min.js')}}"></script>
 
+            <style>
+                .float{
+                    position:fixed;
+                    width:60px;
+                    height:60px;
+                    bottom:40px;
+                    right:40px;
+                    background-color:#25d366;
+                    color:#FFF;
+                    border-radius:50px;
+                    text-align:center;
+                    font-size:30px;
+                    box-shadow: 2px 2px 3px #999;
+                    z-index:100;
+                }
+
+                .my-float{
+                    margin-top:16px;
+                }
+            </style>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+            <a href="http:wa.me/2348034547657/?text=Goodday, My Username is....." class="float" target="_blank">
+                <i class="fa fa-whatsapp my-float"></i>
+            </a>
+
 </body>
 
 <!-- Mirrored from bootstrap.gallery/unipro/v1-x/03-design-green/add-product.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Apr 2022 11:24:24 GMT -->
