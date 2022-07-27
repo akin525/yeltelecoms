@@ -73,14 +73,14 @@
                     <b class="logo-icon p-l-10">
                         <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                         <!-- Dark Logo icon -->
-                        <img src="{{asset('assets/images/logo-icon.png')}}" alt="homepage" class="light-logo" />
+                        <img width="150" src="{{asset('images/yel.png')}}" alt="homepage" class="light-logo" />
 
                     </b>
                     <!--End Logo icon -->
                     <!-- Logo text -->
                     <span class="logo-text">
                              <!-- dark Logo text -->
-                        <h6 class="light-logo">YELLOWMANTELECOMS</h6>
+{{--                        <h6 class="light-logo">YELLOWMANTELECOMS</h6>--}}
 
                         </span>
                     <!-- Logo icon -->
@@ -237,8 +237,10 @@
                 <ul id="sidebarnav" class="p-t-30">
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('dashboard')}}" aria-expanded="false"><i class="mdi mdi-home"></i><span class="hide-menu">Back to User</span></a></li>
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('admin/dashboard')}}" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
+                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('admin/user')}}" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">ALl Users</span></a></li>
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('admin/air') }}" aria-expanded="false"><i class="mdi mdi-laptop"></i><span class="hide-menu">Airtime Control</span></a></li>
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('admin/server') }}" aria-expanded="false"><i class="mdi mdi-laptop"></i><span class="hide-menu">Data Control</span></a></li>
+                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('admin/renotransaction')}}" aria-expanded="false"><i class="mdi mdi-book"></i><span class="hide-menu">Reno Transaction</span></a></li>
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('admin/product')}}" aria-expanded="false"><i class="mdi mdi-cart"></i><span class="hide-menu">Reno Product</span></a></li>
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('admin/setcharge')}}" aria-expanded="false"><i class="mdi mdi-settings"></i><span class="hide-menu">Set Charges</span></a></li>
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('admin/noti')}}" aria-expanded="false"><i class="mdi mdi-settings"></i><span class="hide-menu">Set Notification</span></a></li>

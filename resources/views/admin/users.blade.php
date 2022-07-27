@@ -1,59 +1,43 @@
 @include('admin.layouts.sidebar')
+<link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
     <div class="row">
         <div class="col-lg-12">
             <div class="row">
-                <div class="row column1">
-                    <div class="col-md-7 col-lg-4">
-                        <div class="full counter_section margin_bottom_30">
-                            <div class="couter_icon">
-                                <div>
-                                    <i class="fa fa-users yellow_color"></i>
-                                </div>
-                            </div>
-                            <div class="counter_no">
-                                <div>
-                                    <h5 class="total_no text-center">{{ number_format($t_users) ?? 'Total users' }}</h5>
+                <!-- Column -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card card-hover">
+                        <div class="box bg-cyan text-center">
+                            <h1 class="font-light text-white"><i class="fa fa-users"></i></h1>
 
-                                    <h6 class="head_couter">Total Users</h6>
-                                </div>
-                            </div>
+                            <h6 class="text-white">{{ number_format($t_users) ?? 'Total users' }}</h6>
+                            <h6 class="text-white">Total Users</h6>
                         </div>
                     </div>
-                    <div class="col-md-7 col-lg-4">
-                        <div class="full counter_section margin_bottom_30">
-                            <div class="couter_icon">
-                                <div>
-                                    <i class="fa fa-users yellow_color"></i>
-                                </div>
-                            </div>
-                            <div class="counter_no">
-                                <div>
-                                    <h5 class="total_no text-center">{{ number_format($res) ?? 'Total reseller' }}</h5>
-
-                                    <h6 class="head_couter">Total Reseller</h6>
-                                </div>
-                            </div>
+                </div>
+                <!-- Column -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card card-hover">
+                        <div class="box bg-success text-center">
+                            <h1 class="font-light text-white"><i class="fa fa-users"></i></h1>
+                            <h6 class="text-white">{{ number_format($res) ?? 'Total reseller' }}</h6>
+                            <h6 class="text-white">Total Reseller</h6>
                         </div>
                     </div>
-                    <div class="col-md-7 col-lg-4">
-                        <div class="full counter_section margin_bottom_30">
-                            <div class="couter_icon">
-                                <div>
-                                    <i class="fa fa-users blue1_color"></i>
-                                </div>
-                            </div>
-                            <div class="counter_no">
-                                <div>
-
-                                    <h5 class="total_no text-center">{{ number_format($r_users) ?? 'Total Referred' }}</h5>
-                                    <h6 class="head_couter">Total Referred</h6>
-                                </div>
-                            </div>
+                </div>
+                <!-- Column -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card card-hover">
+                        <div class="box bg-warning text-center">
+                            <h1 class="font-light text-white"><i class="fa fa-users"></i></h1>
+                            <h6 class="text-white">{{ number_format($r_users) ?? 'Total Referred' }}</h6>
+                            <h6 class="text-white">Total Referred</h6>
                         </div>
                     </div>
-
+                </div>
+                <!-- Column -->
             </div>
+
         </div>
     </div>
 
@@ -70,6 +54,7 @@
                                 <th>Customer</th>
                                 <th>Email</th>
                                 <th>Phone-No</th>
+                                <th>Balance</th>
                                 <th>Full-Name</th>
                                 <th>Action</th>
                             </tr>
@@ -78,11 +63,12 @@
                             @foreach($users as $user )
                                 <tr>
                                     <td>
-                                            <img width="50" src="{{asset("images/bn.jpeg")}}" alt="" class="rounded-circle thumb-sm mr-1"> {{$user->username}}
+                                            <img width="50" src="{{asset("samso.png")}}" alt="" class="rounded-circle thumb-sm mr-1"> {{$user->username}}
                                     </td>
 {{--                                    <td>₦{{$user->balance}}</td>--}}
                                     <td>{{$user->email}}</td>
-                                    <td>{{$user->phone_no}}</td>
+                                    <td>{{$user->phone}}</td>
+                                    <td>₦{{number_format(intval($user->wallet *1), 2)}}</td>
                                     <td>{{$user->name}}</td>
                                     <td><a href="profile/{{ $user->username }}" class="btn btn-sm btn-success"><i class="fa fa-edit"></i></a></td>
                                 </tr>

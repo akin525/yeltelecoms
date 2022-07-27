@@ -4,37 +4,31 @@
         <div class="row column_title">
             <div class="col-md-12">
                 <div class="page_title">
-                    <h2>MCD Transaction</h2>
+                    <h2>RENO Transaction</h2>
                 </div>
             </div>
         </div>
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table id="data-table-buttons" class="table table-striped table-bordered align-middle">
+                    <table id="zero_config" class="table table-striped table-bordered">
                         <thead>
-                        <th class="table-active">Name</th>
-                        <th>Reference Number</th>
-                        <th> Date</th>
-                        <th>Username</th>
+                        <th class="table-active">id</th>
+                        <th>Plan</th>
                         <th>Amount</th>
-                        <th>Device Details</th>
-                        <th>Amount Before</th>
-                        <th>Amount After</th>
-                        <th>Description</th>
+                        <th>Number</th>
+                        <th>Refid</th>
+                        <th>Date</th>
                         </thead>
                         <tbody>
                        @foreach ($success as $plan)
                         <tr>
-                            <td>{{$plan['name'] }}</td>
-                            <td>{{ $plan['ref'] }}</td>
-                            <td>{{ $plan['date'] }}</td>
-                            <td>{{ $plan['user_name']}}</td>
+                            <td>{{$plan['id'] }}</td>
+                            <td>{{ $plan['product'] }}</td>
                             <td>{{ $plan['amount'] }}</td>
-                            <td>{{ $plan['device_details'] }}</td>
-                            <td>{{$plan['i_wallet'] }}</td>
-                            <td>{{ $plan['f_wallet'] }}</td>
-                            <td>{{$plan['description'] }}</td>
+                            <td>{{ $plan['number']}}</td>
+                            <td>{{ $plan['transactionid'] }}</td>
+                            <td>{{ $plan['timestamp'] }}</td>
                         </tr>
                        @endforeach
                         </tbody>
@@ -45,4 +39,17 @@
     </div>
 </div>
 
+<!-- this page js -->
+<script src="{{asset('assets/libs/moment/min/moment.min.js')}}"></script>
+<script src="{{asset('assets/libs/fullcalendar/dist/fullcalendar.min.js')}}"></script>
+<script src="{{asset('dist/js/pages/calendar/cal-init.js')}}"></script>
+<script src="{{asset('assets/extra-libs/multicheck/datatable-checkbox-init.js')}}"></script>
+<script src="{{asset('assets/extra-libs/multicheck/jquery.multicheck.js')}}"></script>
+<script src="{{asset('assets/extra-libs/DataTables/datatables.min.js')}}"></script>
+<script>
+    /****************************************
+     *       Basic Table                   *
+     ****************************************/
+    $('#zero_config').DataTable();
+</script>
 @include('layouts.footer')

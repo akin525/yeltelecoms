@@ -48,11 +48,11 @@ public function index()
 
         $data =deposit::orderBy('id', 'desc')->paginate(25);
         $tt = deposit::count();
-        $ft = deposit::where([['date', 'like', Carbon::now()->format('Y-m-d') . '%']])->count();
+        $ft = deposit::where([['created_at', 'like', Carbon::now()->format('Y-m-d') . '%']])->count();
         $st = deposit::where([['date', 'like', Carbon::now()->subDay()->format('Y-m-d') . '%']])->count();
         $rt = deposit::where([['date', 'like', Carbon::now()->subDays(2)->format('Y-m-d') . '%']])->count();
         $amount=deposit::sum('amount');
-        $am=deposit::where([['date', 'LIKE', '%' . $today . '%']])->sum('amount');
+        $am=deposit::where([['created_at', 'LIKE', '%' . $today . '%']])->sum('amount');
         $am1=deposit::where([['date', 'like', '%'. Carbon::now()->subDay()->format('y-m-d'). '%']])->sum('amount');
         $am2=deposit::where([['date', 'like', '%'. Carbon::now()->subDays(2)->format('y-m-d'). '%']])->sum('amount');
 
