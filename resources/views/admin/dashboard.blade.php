@@ -12,6 +12,12 @@
             <button type='button' class='close' data-dismiss='alert'>&times;</button>
             <i class='fa fa-ban-circle'></i><strong>Notification: </br></strong>Welcome Back {{"$user->username"}}
         </div>
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">Renomobilemoney Notification!</h4>
+            <p><b>{{$pa['message']}}</b></p>
+            <hr>
+            <p class="mb-0">Alway read & check notice after logged in</p>
+        </div>
         <div class="card">
             <div class="card-body">
                 <div class="w3-panel w3-yellow w3-round-xlarge">
@@ -19,11 +25,11 @@
                         <center>
                             <!--                    <h4 class="w3-text-green"><b>&nbsp;&nbsp; &nbsp;&nbsp; <a class="w3-btn w3-green w3-border w3-round-large" href="with.php">Withdraw From MCD Wallet</a>-->
                             <a class="w3-btn w3-green w3-border w3-round-large" href="{{route('admin/credit')}}">Credit User</a>
-                            <a class="w3-btn w3-green w3-border w3-round-large" href="#">Withdraw MCD Wallet</a>
+                            <a class="w3-btn w3-green w3-border w3-round-large" href="#">Withdraw Reno Wallet</a>
 
                             <a class="w3-btn w3-green w3-border w3-round-large" href="{{route('admin/credit')}}">Refund User</a>
                             <a class="w3-btn w3-green w3-border w3-round-large" href="{{route('admin/charge')}}">Charge User</a>
-                            <a class="w3-btn w3-green w3-border w3-round-large" href="#">Withdraw MCD Commission</a>
+{{--                            <a class="w3-btn w3-green w3-border w3-round-large" href="#">Withdraw MCD Commission</a>--}}
 
                             <!--                            <a class="w3-btn w3-green w3-border w3-round-large" href="method.php">All Payment Method</a>-->
                         </center>

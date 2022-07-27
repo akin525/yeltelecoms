@@ -84,7 +84,7 @@ public function dashboard(Request $request)
         $data = json_decode($response, true);
 //        $success = $data["success"];
         $tran = $data["wallet"][0]['balance'];
-//        $pa = $data["data"]["commission"];
+        $pa = $data["me"];
         $today = Carbon::now()->format('Y-m-d');
 
 
@@ -95,7 +95,7 @@ public function dashboard(Request $request)
         $data['sum_deposits'] = deposit::where([['date', 'LIKE', '%' . $today . '%']])->sum('amount');
         $data['sum_bill'] = bo::where([['date', 'LIKE', '%' . $today . '%']])->sum('amount');
 
-        return view('admin/dashboard', compact('user',  'data', 'lock', 'totalcharge',  'tran', 'alluser', 'totaldeposite', 'totalwallet', 'deposite', 'me', 'bil2', 'bill', 'totalrefer', 'totalprofit',  'count'));
+        return view('admin/dashboard', compact('user',  'data', 'lock', 'totalcharge', 'pa',  'tran', 'alluser', 'totaldeposite', 'totalwallet', 'deposite', 'me', 'bil2', 'bill', 'totalrefer', 'totalprofit',  'count'));
 
     }
     return redirect("admin/login")->with('status', 'You are not allowed to access');
@@ -111,29 +111,28 @@ public function mcdtran()
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => $resellerURL . 'me',
+            CURLOPT_URL => 'https://renomobilemoney.com/api/dashboard',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
             CURLOPT_TIMEOUT => 0,
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_SSL_VERIFYHOST => 0,
-            CURLOPT_SSL_VERIFYPEER => 0,
-            CURLOPT_CUSTOMREQUEST => 'POST',
-            CURLOPT_POSTFIELDS => array('service' => 'transactions'),
+            CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => array(
-                'Authorization: mcd_key_tGSkWHl5fJZsJev5FRyB5hT1HutlCa'
+                'apikey: RENO-62ddc85d549f76.59606188'
             ),
         ));
 
         $response = curl_exec($curl);
 
         curl_close($curl);
-//echo $response;
+//        echo $response;
+
+//                                                        return $response;
         $data = json_decode($response, true);
-        $success = $data["data"];
-        return view('admin/mcdtransaction', compact('success' ));
+        $success = $data["purchase"];
+        return view('admin/renotransaction', compact('success' ));
 
     }
     return redirect("admin/login")->with('status', 'You are not allowed to access');

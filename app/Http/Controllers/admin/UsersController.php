@@ -22,7 +22,7 @@ $u=User::get();
 //            ->join('wallets','users.username','=','users.username')
 //            ->paginate(30);
         $users=User::paginate(30);
-        $wallet = DB::table('wallets')->orderBy('id', 'desc')->get();
+//        $wallet = DB::table('wallets')->orderBy('id', 'desc')->get();
 $reseller=DB::table('users')->where("apikey", "!=", "")->count();
         $t_users = DB::table('users')->count();
         $f_users = DB::table('users')->where("role","=","")->count();
@@ -32,7 +32,7 @@ $reseller=DB::table('users')->where("apikey", "!=", "")->count();
         $a_users = DB::table('users')->where("role","=","users")->count();
 
 //return $users;
-        return view('admin/users', ['users' => $users, 'res'=>$reseller, 't_users'=>$t_users, 'wallet'=>$wallet, 'f_users'=>$f_users, 'r_users'=>$r_users,'a_users'=>$a_users]);
+        return view('admin/users', ['users' => $users, 'res'=>$reseller, 't_users'=>$t_users,  'f_users'=>$f_users, 'r_users'=>$r_users,'a_users'=>$a_users]);
 
     }
     public function fin()
@@ -52,14 +52,14 @@ $reseller=DB::table('users')->where("apikey", "!=", "")->count();
 
         // Instantiates a Query object
         $query = User::Where('username', 'LIKE', "%$user_name%")
-            ->Where('phone_no', 'LIKE', "%$phoneno%")
+            ->Where('phone', 'LIKE', "%$phoneno%")
             ->Where('email', 'LIKE', "%$email%")
             ->Where('created_at', 'LIKE', "%$regdate%")
             ->limit(500)
             ->get();
 
         $cquery = User::Where('username', 'LIKE', "%$user_name%")
-            ->Where('phone_no', 'LIKE', "%$phoneno%")
+            ->Where('phone', 'LIKE', "%$phoneno%")
             ->Where('email', 'LIKE', "%$email%")
             ->Where('created_at', 'LIKE', "%$regdate%")
             ->count();
@@ -73,7 +73,7 @@ $reseller=DB::table('users')->where("apikey", "!=", "")->count();
         if(!$ap){
             return redirect('admin/finds')->with("error", "User does not exist");
         }
-$wallet=wallet::where('username', $username)->first();
+//$wallet=wallet::where('username', $username)->first();
         $user =User::where('username', $username)->first();
         $sumtt = deposit::where('username', $ap->username)->sum('amount');
         $tt = deposit::where('username', $ap->username)->count();
@@ -85,7 +85,7 @@ $wallet=wallet::where('username', $username)->first();
         $sumch = charp::where('username', $ap->username)->sum('amount');
         $charge = charp::where('username', $ap->username)->paginate(10);
 //return $user;
-        return view('admin/profile', ['user' => $ap, 'sumtt'=>$sumtt, 'charge'=>$charge,  'sumch'=>$sumch, 'sumbo'=>$sumbo, 'tt' => $tt, 'wallet'=>$wallet, 'td' => $td,  'referrals' => $referrals, 'version' => $v,  'tat' =>$tat]);
+        return view('admin/profile', ['user' => $ap, 'sumtt'=>$sumtt, 'charge'=>$charge,  'sumch'=>$sumch, 'sumbo'=>$sumbo, 'tt' => $tt,  'td' => $td,  'referrals' => $referrals, 'version' => $v,  'tat' =>$tat]);
     }
     public function server()
     {

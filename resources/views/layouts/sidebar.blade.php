@@ -228,7 +228,7 @@
     <aside class="left-sidebar" data-sidebarbg="skin5">
         <!-- Sidebar scroll-->
         <div class="scroll-sidebar">
-            <!-- Sidebar navigation-->
+            <!-- Sidebar navigatiodn-->
             <nav class="sidebar-nav">
                 <ul id="sidebarnav" class="p-t-30">
                     @if(Auth::user()->role=='admin')

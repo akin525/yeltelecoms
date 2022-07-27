@@ -1,5 +1,5 @@
 @include('admin.layouts.sidebar')
-
+<link rel="stylesheet" href="{{ mix('css/app.css') }}">
 <div class="row">
 
     @if (session('success'))
@@ -25,9 +25,9 @@
                             <div class="met-profile-main">
                                 <div class="met-profile-main-pic">
                                     @if($user->photo!=null)
-                                        <img src="https://mcd.5starcompany.com.ng/app/avatar/{{$user->user_name }}.JPG" alt="img" class="img img-thumbnail">
+                                        <img src="https://mcd.5starcompany.com.ng/app/avatar/{{$user->username }}.JPG" alt="img" class="img img-thumbnail">
                                     @else
-                                        <img alt="image" class="img img-thumbnail" width="100" src="{{asset("images/bn.jpeg")}}">
+                                        <img alt="image" class="img img-thumbnail" width="100" src="{{asset('assets/images/favicon.png')}}">
                                     @endif
                                     <span class="fro-profile_main-pic-change"><i class="fa fa-camera"></i></span></div>
                                 <div class="met-profile_user-detail">
@@ -42,18 +42,18 @@
                             <ul class="list-unstyled personal-detail">
                                 <li class=""><i class="fa fa-user text-info "></i> <b>Full-Name</b> : {{$user->name}}</li>
                                 <br>
-                                <li class=""><i class="fa fa-phone text-info "></i> <b>Phone </b> : {{$user->phone_no}}</li>
+                                <li class=""><i class="fa fa-phone text-info "></i> <b>Phone </b> : {{$user->phone}}</li>
                                 <br>
                                 <li class="mt-2"><i class="fa fa-envelope text-info "></i> <b>Email </b> : {{$user->email}}</li>
                                 <br>
                                 <li class="mt-2"><i class="fa fa-calendar text-info"></i> <b>Reg. Date</b> : {{$user->created_at}}</li>
                                 <br>
                                 <li class="mt-2"><i class="fa fa-key text-info "></i> <b>Api</b> : {{$user->apikey}}</li>
-                                @if($wallet->account_number != "1")
+                                @if($user->account_number != "1")
                                 <br>
-                                <li class="mt-2"><i class="fa fa-phone text-info "></i> <b>Account-No</b> : {{$wallet->account_number}}</li>
+                                <li class="mt-2"><i class="fa fa-phone text-info "></i> <b>Account-No</b> : {{$user->account_number}}</li>
                                 <br>
-                                <li class="mt-2"><i class="fa fa-user text-info "></i> <b>Account-Name</b> : {{$wallet->account_name}}</li>
+                                <li class="mt-2"><i class="fa fa-user text-info "></i> <b>Account-Name</b> : {{$user->account_name}}</li>
                                 @endif
                             </ul>
                         </div>
@@ -119,24 +119,24 @@
                                 <div class="d-flex justify-content-between bg-purple p-3 mt-3 rounded">
                                     <center>
                                     <div>
-                                        <h4 class="font-weight-semibold ">&#8358;{{number_format($wallet->balance)}}</h4>
-                                        <p class="mb-0 ">Wallet Balance</p>
+                                        <h4 class="font-weight-semibold text-white">&#8358;{{number_format($user->wallet)}}</h4>
+                                        <p class="mb-0 text-white ">Wallet Balance</p>
                                     </div>
                                     </center>
                                     <div>
-                                        <h4 class="mb-1 font-weight-semibold ">&#8358;{{$sumtt}}</h4>
-                                        <p class="mb-0">Total Deposit</p>
+                                        <h4 class="mb-1 font-weight-semibold text-white">&#8358;{{$sumtt}}</h4>
+                                        <p class="mb-0 text-white">Total Deposit</p>
                                     </div>
                                 </div>
 
                                 <div class="d-flex justify-content-between bg-purple p-3 mt-3 rounded">
                                     <div>
-                                        <h4 class="mb-1 font-weight-semibold ">&#8358;{{number_format($sumbo)}}</h4>
-                                        <p class=" mb-0">Total Bills</p>
+                                        <h4 class="mb-1 font-weight-semibold text-white">&#8358;{{number_format($sumbo)}}</h4>
+                                        <p class=" mb-0 text-white">Total Bills</p>
                                     </div>
                                     <div>
-                                        <h4 class="mb-1 font-weight-semibold ">&#8358;{{number_format($sumch)}}</h4>
-                                        <p class="mb-0">Total Charges</p>
+                                        <h4 class="mb-1 font-weight-semibold text-white">&#8358;{{number_format($sumch)}}</h4>
+                                        <p class="mb-0 text-white">Total Charges</p>
                                     </div>
                                 </div>
                             </div>
@@ -216,7 +216,7 @@
                             @foreach($referrals as $referral)
                                 @if($referral->photo!=null)
                                     <a href="{{$referral->username}}" class="btn btn-pink btn-circle ml-2">
-                                        <img alt="image" class="card-img img" width="50" src="{{asset("images/bn.jpeg")}}">
+                                        <img alt="image" class="card-img img" width="50" src="{{asset('assets/images/favicon.png')}}">
                                         {{$referral->username}}
                                     </a>
                                 @else

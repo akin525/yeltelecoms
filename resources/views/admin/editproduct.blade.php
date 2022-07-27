@@ -8,23 +8,24 @@
                 </div>
             </div>
         </div>
+        <center>
+        <div class="row align-content-center">
+            <!-- Column -->
+            <div class="col-md-9 col-lg-12">
+                <div class="card card-hover">
+                    <div class="box bg-cyan text-center">
+                        <h1 class="font-light text-white"><i class="mdi mdi-cart"></i></h1>
 
-        <div class="row column1">
-            <div class="full counter_section margin_bottom_30">
-                <div class="couter_icon">
-                    <div>
-                        <i class="fa fa-shopping-cart yellow_color"></i>
-                    </div>
-                </div>
-                <div class="counter_no">
-                    <div>
-                        <h5 class="total_no text-center">{{$pro->plan}}</h5>
-                        <h6 class="head_couter">Product</h6>
+                        <h6 class="text-white">{{$pro->plan}}</h6>
+                        <h6 class="text-white">Product</h6>
                     </div>
                 </div>
             </div>
+
+            <!-- Column -->
         </div>
-        <!-- Title & Breadcrumbs-->
+        </center>
+
 
         <div class="row">
             <div class="col-md-12">

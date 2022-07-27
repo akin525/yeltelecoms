@@ -8,21 +8,20 @@
                 </div>
             </div>
         </div>
+        <div class="row align-content-center">
+            <!-- Column -->
+            <div class="col-md-9 col-lg-12">
+                <div class="card card-hover">
+                    <div class="box bg-cyan text-center">
+                        <h1 class="font-light text-white"><i class="fa fa-money"></i></h1>
 
-        <div class="row column1">
-            <div class="full counter_section margin_bottom_30">
-                <div class="couter_icon">
-                    <div>
-                        <i class="fa fa-google-wallet yellow_color"></i>
-                    </div>
-                </div>
-                <div class="counter_no">
-                    <div>
-                        <h5 class="total_no text-center">₦<?php echo number_format(intval($totalwallet *1),2);?></h5>
-                        <h6 class="head_couter">All User Balance</h6>
+                        <h6 class="text-white">₦{{number_format(intval($totalwallet *1),2)}}</h6>
+                        <h6 class="text-white">All User Balance</h6>
                     </div>
                 </div>
             </div>
+
+            <!-- Column -->
         </div>
         <!-- Title & Breadcrumbs-->
 

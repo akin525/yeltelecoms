@@ -105,11 +105,11 @@
                                             @if($user->photo)
                                                 <img src="https://mcd.5starcompany.com.ng/app/avatar/{{$user->photo}}" alt="" class="rounded-circle thumb-sm mr-1"> {{$user->username}}
                                             @else
-                                                <img width="50" src="{{asset("images/bn.jpeg")}}" alt="" class="rounded-circle thumb-sm mr-1"> {{$user->username}}
+                                                <img width="50" src="{{asset('assets/images/favicon.png')}}" alt="" class="rounded-circle thumb-sm mr-1"> {{$user->username}}
                                             @endif
                                         </td>
                                         <td>{{$user->email }}</td>
-                                        <td>{{$user->phone_no}}</td>
+                                        <td>{{$user->phone}}</td>
                                         <td>{{$user->role}}</td>
                                         <td>{{$user->created_at}}</td>
                                         <td><a href="profile/{{ $user->username }}" class="btn btn-sm btn-success"><i class="fa fa-edit"></i></a></td>

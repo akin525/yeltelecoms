@@ -3,6 +3,13 @@
     <button type='button' class='close' data-dismiss='alert'>&times;</button>
     <i class='fa fa-ban-circle'></i><h6 class="text-capitalize">Important Notification: </br><b>Welcome Back {{Auth::user()->name}}</b></h6>
 </div>
+
+<div class="alert alert-success" role="alert">
+    <h4 class="alert-heading">Important Notification!</h4>
+    <p><b>{{$me->message}}</b></p>
+    <hr>
+    <p class="mb-0">Alway read & check notice after logged in</p>
+</div>
 <div class="row">
     <!-- Column -->
     <div class="col-md-6 col-lg-3">

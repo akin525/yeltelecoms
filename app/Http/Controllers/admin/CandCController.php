@@ -19,12 +19,7 @@ class CandCController
     {
         if (Auth()->user()->role == "admin") {
 
-            $wallet = wallet::get();
-            $totalwallet = 0;
-            foreach ($wallet as $wall) {
-                $totalwallet += (int)$wall->balance;
-
-            }
+            $totalwallet = User::sum('wallet');
             return view('admin/credit', compact('totalwallet'));
         }
         return redirect("admin/login")->with('status', 'You are not allowed to access');
@@ -47,7 +42,7 @@ public function credit(Request $request)
             return redirect("admin/credit");
 
         }
-        $wallet = wallet::where('username', $request->username)->first();
+        $wallet = User::where('username', $request->username)->first();
 
         $depo = deposit::where('payment_ref', $request->refid)->first();
         if (isset($depo)) {
@@ -56,24 +51,24 @@ public function credit(Request $request)
             return redirect("admin/credit");
 
         } else {
-            $gt = $wallet->balance + $request->amount;
+            $gt = $wallet->wallet + $request->amount;
             $deposit = deposit::create([
                 'username' => $user->username,
                 'payment_ref' => $request->refid,
                 'amount' => $request->amount,
-                'iwallet' => $wallet->balance,
+                'iwallet' => $wallet->wallet,
                 'fwallet' => $gt,
             ]);
 
-            $wallet->balance = $gt;
+            $wallet->wallet = $gt;
             $wallet->save();
-            $admin = 'admin@primedata.com.ng';
-            $admin2 = 'primedata18@gmail.com';
+//            $admin = 'admin@primedata.com.ng';
+//            $admin2 = 'primedata18@gmail.com';
 
             $receiver = $user->email;
-            Mail::to($receiver)->send(new Emailfund($deposit));
-            Mail::to($admin)->send(new Emailfund($deposit));
-            Mail::to($admin2)->send(new Emailfund($deposit));
+//            Mail::to($receiver)->send(new Emailfund($deposit));
+//            Mail::to($admin)->send(new Emailfund($deposit));
+//            Mail::to($admin2)->send(new Emailfund($deposit));
 
             $mg= $request->amount . " was credited to " . $user->username . ' successfully';
             Alert::success('Admin', $mg);
@@ -106,29 +101,29 @@ public function charge(Request $request)
             return redirect("admin/charge");
 
         }
-        $wallet = wallet::where('username', $request->username)->first();
+        $wallet = User::where('username', $request->username)->first();
 
 
-        $gt = $wallet->balance - $request->amount;
+        $gt = $wallet->wallet - $request->amount;
         $charp = charp::create([
             'username' => $user->username,
             'payment_ref' => $request->refid,
             'amount' => $request->amount,
-            'iwallet' => $wallet->balance,
+            'iwallet' => $wallet->wallet,
             'fwallet' => $gt,
         ]);
 
-        $wallet->balance = $gt;
+        $wallet->wallet = $gt;
         $wallet->save();
 
 
-        $admin = 'admin@primedata.com.ng';
-        $admin2 = 'primedata18@gmail.com';
+//        $admin = 'admin@primedata.com.ng';
+//        $admin2 = 'primedata18@gmail.com';
 
         $receiver = $user->email;
-        Mail::to($receiver)->send(new Emailcharges($charp));
-        Mail::to($admin)->send(new Emailcharges($charp));
-        Mail::to($admin2)->send(new Emailcharges($charp));
+//        Mail::to($receiver)->send(new Emailcharges($charp));
+//        Mail::to($admin)->send(new Emailcharges($charp));
+//        Mail::to($admin2)->send(new Emailcharges($charp));
 
         $mg= $request->amount . " was charge from " . $user->username . ' wallet successfully';
         Alert::success('Admin', $mg);
