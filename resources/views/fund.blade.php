@@ -94,7 +94,7 @@
                     </div>
                 </div>
 {{--                <button class="btn btn-outline-success btn-block withdraw-btn" type="submit" onclick="payWithPaystack()">Click Fund With Paystack</button>--}}
-                <script src="https://js.paystack.co/v1/inline.js"> </script>
+{{--                <script src="https://js.paystack.co/v1/inline.js"> </script>--}}
                 <br>
                 {{--                <a href="fun.php"><button  type="button" class=" btn-block withdraw-btn"  >Fund With Transfer</button></a>--}}
 
