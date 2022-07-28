@@ -44,7 +44,7 @@ public function updateuser(Request $request)
     ]);
     $users=User::where('username', $request->username)->first();
     $users->name=$request->name;
-    $users->phone_no=$request->number;
+    $users->phone=$request->number;
     $users->email=$request->email;
     $users->role=$request->role;
     $users->save();

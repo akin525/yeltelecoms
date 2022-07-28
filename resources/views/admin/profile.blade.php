@@ -397,7 +397,7 @@
                                             <div class="">
                                                 <div class="field">
                                                     <label class="label_field">Phone No</label>
-                                                    <input type="number" class="form-control" name="number" value="{{$user->phone_no}}" required />
+                                                    <input type="number" class="form-control" name="number" value="{{$user->phone}}" required />
                                                 </div>
                                                 <br>
                                                 <div class="field">
