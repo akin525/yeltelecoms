@@ -10,7 +10,7 @@
         </div>
         <div class='alert alert-info'>
             <button type='button' class='close' data-dismiss='alert'>&times;</button>
-            <i class='fa fa-ban-circle'></i><strong>Notification: </br></strong>Welcome Back {{"$user->username"}}
+            <i class='fa fa-ban-circle'></i><strong>Notification: </br></strong>Welcome Back {{Auth::user()->name}}
         </div>
         <div class="alert alert-success" role="alert">
             <h4 class="alert-heading">Renomobilemoney Notification!</h4>
