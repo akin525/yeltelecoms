@@ -12,6 +12,7 @@ use App\Models\User;
 use App\Models\wallet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UsersController
 {
@@ -129,5 +130,13 @@ $reseller=DB::table('users')->where("apikey", "!=", "")->count();
         $message->save();
         return redirect(url('admin/noti'))
             ->with('status',' Notification change successfully');
+    }
+    public function del($request)
+    {
+        $user=User::where('id', $request)->delete();
+
+        Alert::success('Success', 'User Delete Successfully');
+        return back();
+
     }
 }

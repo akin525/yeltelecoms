@@ -69,7 +69,7 @@ public function index()
         $tt = bo::count();
         $ft = bo::where([['created_at', 'like', Carbon::now()->format('Y-m-d') . '%']])->count();
         $st = bo::where([['created_at', 'like', Carbon::now()->subDay()->format('Y-m-d') . '%']])->count();
-        $rt = bo::where([['created_at', 'like', Carbon::now()->subDays(2)->format('Y-m-d') . '%']])->count();
+        $rt = bo::where([['created_at', 'l n ike', Carbon::now()->subDays(2)->format('Y-m-d') . '%']])->count();
         $amount=bo::sum('amount');
         $am=bo::where([['created_at', 'LIKE', '%' . $today . '%']])->sum('amount');
         $am1=bo::where([['created_at', 'like', '%'. Carbon::now()->subDay()->format('y-m-d'). '%']])->sum('amount');

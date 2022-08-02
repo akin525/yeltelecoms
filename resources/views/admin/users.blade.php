@@ -70,7 +70,9 @@
                                     <td>{{$user->phone}}</td>
                                     <td>₦{{number_format(intval($user->wallet *1), 2)}}</td>
                                     <td>{{$user->name}}</td>
-                                    <td><a href="profile/{{ $user->username }}" class="btn btn-sm btn-success"><i class="fa fa-edit"></i></a></td>
+                                    <td><a href="profile/{{ $user->username }}" class="btn btn-sm btn-success"><i class="fa fa-edit"></i></a>
+                                        <a href="delete/{{ $user->id}}" class="btn btn-sm btn-success"><i class="fa fa-remove"></i></a>
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>
