@@ -23,7 +23,7 @@ class AlltvController
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://app.mcd.5starcompany.com.ng/api/reseller/list',
+            CURLOPT_URL => 'https://app2.mcd.5starcompany.com.ng/api/reseller/list',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -69,7 +69,7 @@ foreach ($plan as $pla) {
 //        return $request;
 
 //return $ve;
-        $resellerURL='https://app.mcd.5starcompany.com.ng/api/reseller/';
+        $resellerURL='https://app2.mcd.5starcompany.com.ng/api/reseller/';
 
 
         $curl = curl_init();
@@ -139,11 +139,11 @@ foreach ($plan as $pla) {
                 $user = User::find($request->user()->id);
                 $tv = data::where('id', $request->id)->first();
 
-                $wallet = wallet::where('username', $user->username)->first();
+//                $wallet = wallet::where('username', $user->username)->first();
 
 
-                if ($wallet->balance < $tv->tamount) {
-                    $mg = "You Cant Make Purchase Above" . "NGN" . $tv->tamount . " from your wallet. Your wallet balance is NGN $wallet->balance. Please Fund Wallet And Retry or Pay Online Using Our Alternative Payment Methods.";
+                if ($user->wallet < $tv->tamount) {
+                    $mg = "You Cant Make Purchase Above" . "NGN" . $tv->tamount . " from your wallet. Your wallet balance is NGN $user->wallet. Please Fund Wallet And Retry or Pay Online Using Our Alternative Payment Methods.";
                     Alert::error('Error', $mg);
                     return redirect('dashboard');
 
@@ -160,13 +160,13 @@ foreach ($plan as $pla) {
                     Alert::error('Error', $mg);
                     return redirect('dashboard');
                 } else {
-                    $gt = $wallet->balance - $tv->tamount;
+                    $gt = $user->wallet - $tv->tamount;
 
 
-                    $wallet->balance = $gt;
-                    $wallet->save();
+                    $user->wallet= $gt;
+                    $user->save();
 
-                    $resellerURL = 'https://app.mcd.5starcompany.com.ng/api/reseller/';
+                    $resellerURL = 'https://renomobilemoney.com/api/';
 
                     $curl = curl_init();
 
@@ -181,7 +181,8 @@ foreach ($plan as $pla) {
                         CURLOPT_CUSTOMREQUEST => 'POST',
                         CURLOPT_POSTFIELDS => array('refid'=>$request->refid, 'coded' => $tv->cat_id, 'phone' => $request->number),
                         CURLOPT_HTTPHEADER => array(
-                            'Authorization: mcd_key_tGSkWHl5fJZsJev5FRyB5hT1HutlCa'
+                            'apikey: RENO-62ddc85d549f76.59606188'
+
                         )
                     ));
 
@@ -191,7 +192,6 @@ foreach ($plan as $pla) {
 //                    echo $response;
                     $data = json_decode($response, true);
                     $success = $data["success"];
-                    $tran1 = $data["discountAmount"];
 
 //                        return $response;
                     if ($success == 1) {
@@ -204,7 +204,7 @@ foreach ($plan as $pla) {
                             'result' => $success,
                             'phone' => $request->number,
                             'refid' => $request->refid,
-                            'discountamoun' => $tran1,
+                            'discountamoun' => 0,
                         ]);
 
 
@@ -217,20 +217,21 @@ foreach ($plan as $pla) {
 
                         Mail::to($receiver)->send(new Emailtrans($bo));
                         Mail::to($admin)->send(new Emailtrans($bo));
-
-                        return view('bill', compact('user', 'name', 'am', 'ph', 'success'));
+                        $mg= $am." ".$ph;
+Alert::success('Success', $mg);
+                        return redirect('dashboard');
 
 
                     }elseif ($success==0){
-                        $zo=$user->balance+$tv->tamount;
-                        $user->balance = $zo;
+                        $zo=$user->wallet+$tv->tamount;
+                        $user->wallet = $zo;
                         $user->save();
 
                         $name= $tv->network;
                         $am= "NGN $request->amount Was Refunded To Your Wallet";
                         $ph=", Transaction fail";
 
-                        Alert::success('Success', $am.' '.$ph);
+                        Alert::error('Fail', $am.' '.$ph);
                         return redirect('dashboard');
                     }
                 }
