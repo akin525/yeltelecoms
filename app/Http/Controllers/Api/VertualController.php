@@ -67,28 +67,14 @@ class VertualController
 
     public function run(Request $request)
     {
-//        $web = web::create([
-//            'webbook' => $request
-//        ]);
-
         if ($json = json_decode(file_get_contents("php://input"), true)) {
             print_r($json['ref']);
-//    print_r($json['accountDetails']['accountName']);
             $data = $json;
 
         }
-// return  $data;
-//   $data = json_decode($request, true);
-
-//$paid=$data["paymentStatus"];
         $refid=$data["ref"];
         $amount=$data["amount"];
         $no=$data["account_number"];
-
-        // return $request->all();
-//  echo $amount;
-// echo $bank;
-//echo $acct;
 
         $wallet = User::where('account_number', $no)->first();
         $pt=$wallet['wallet'];

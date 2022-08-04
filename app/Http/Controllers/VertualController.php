@@ -21,12 +21,15 @@ class VertualController
     {
         if (Auth::check()) {
             $user = User::find($request->user()->id);
-//            $wallet = wallet::where('username', $user->username)->first();
+            $username=$user->username.rand(1111, 9999);
+            $name=$user->name;
+            $email=$user->email;
+            $phone=$user->phone;
 
             $curl = curl_init();
 
             curl_setopt_array($curl, array(
-                CURLOPT_URL => 'https://app.mcd.5starcompany.com.ng/api/reseller/virtual-account',
+                CURLOPT_URL => 'https://app2.mcd.5starcompany.com.ng/api/reseller/virtual-account',
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_ENCODING => '',
                 CURLOPT_MAXREDIRS => 10,
@@ -36,7 +39,7 @@ class VertualController
                 CURLOPT_SSL_VERIFYHOST => 0,
                 CURLOPT_SSL_VERIFYPEER => 0,
                 CURLOPT_CUSTOMREQUEST => 'POST',
-                CURLOPT_POSTFIELDS => array('account_name' => $user->username, 'business_short_name' => 'YELLOWMANTELECOMS', 'uniqueid' => $user->username, 'email' => $user->email, 'phone' => '08146328645', 'webhook_url' => 'https://yellowmantelecoms.com.ng/api/run',),
+                CURLOPT_POSTFIELDS => array('account_name' => $name, 'business_short_name' => 'YELLOWMANTELECOMS', 'uniqueid' => $username, 'email' => $email, 'phone' => $phone, 'webhook_url' => 'https://yellowmantelecoms.com.ng/api/run',),
                 CURLOPT_HTTPHEADER => array(
                     'Authorization: mcd_key_75rq4][oyfu545eyuriup1q2yue4poxe3jfd'
                 ),
@@ -45,9 +48,6 @@ class VertualController
             $response = curl_exec($curl);
 
             curl_close($curl);
-//            echo $response;
-//return $response;
-//var_dump(array('account_name' => $name,'business_short_name' => 'RENO','uniqueid' => $username,'email' => $email,'phone' => '08146328645', 'webhook_url'=>'https://renomobilemoney.com/go/run.php'));
             $data = json_decode($response, true);
             $account = $data["data"]["account_name"];
             $number = $data["data"]["account_number"];
