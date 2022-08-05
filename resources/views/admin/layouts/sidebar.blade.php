@@ -249,6 +249,7 @@
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{url('admin/credit')}}" aria-expanded="false"><i class="mdi mdi-wallet"></i><span class="hide-menu">Credit User</span></a></li>
                     <li class="sidebar-item"> <a class="sidebar-link  waves-effect waves-dark" href="{{route('admin/charge')}}" aria-expanded="false"><i class="mdi mdi-wallet"></i><span class="hide-menu">Charge User</span></a></li>
                     <li class="sidebar-item"> <a class="sidebar-link  waves-effect waves-dark" href="{{route('admin/finds')}}" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Find User</span></a></li>
+                    <li class="sidebar-item"> <a class="sidebar-link  waves-effect waves-dark" href="{{route('admin/finddeposite')}}" aria-expanded="false"><i class="mdi mdi-search-web"></i><span class="hide-menu">Find Deposit</span></a></li>
                     <li class="sidebar-item"> <a class="sidebar-link  waves-effect waves-dark" href="{{route('invoice')}}" aria-expanded="false"><i class="mdi mdi-bookmark"></i><span class="hide-menu">Transaction </span></a></li>
                     <li class="sidebar-item"> <a class="sidebar-link  waves-effect waves-dark" href="{{route('charges')}}" aria-expanded="false"><i class="mdi mdi-account-box"></i><span class="hide-menu">Charges</span></a></li>
                 </ul>
