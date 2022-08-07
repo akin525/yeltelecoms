@@ -49,18 +49,24 @@ class VertualController
 
             curl_close($curl);
             $data = json_decode($response, true);
-            $account = $data["data"]["account_name"];
-            $number = $data["data"]["account_number"];
-            $bank = $data["data"]["bank_name"];
+            if ($data['success']==1){
+                $account = $data["data"]["account_name"];
+                $number = $data["data"]["account_number"];
+                $bank = $data["data"]["bank_name"];
 
-            $user->account_number = $number;
-            $user->account_name = $account;
-            $user->save();
-            $mg='New Account Generated '.$account. ' | '.$account;
-            Alert::success('success', $mg);
-            return redirect("dashboard")->withSuccess('You are not allowed to access');
+                $user->account_number = $number;
+                $user->account_name = $account;
+                $user->save();
+
+                Alert::success('Succeaa', 'Virtual Account Successful Created');
+                return redirect("dashboard")->with('success', 'You are not allowed to access');
 
 
+            }elseif ($data['success']==0){
+
+                Alert::error('Error', $response);
+                return redirect('dashboard');
+            }
         }
     }
     public function run(Request $request)
