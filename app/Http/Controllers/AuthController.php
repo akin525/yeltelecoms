@@ -165,6 +165,8 @@ $login=$user->name;
     }
     public function select(Request  $request)
     {
+        $serve = server::where('status', '1')->first();
+
         if (isset($serve)) {
             $user = User::find($request->user()->id);
 
@@ -259,9 +261,9 @@ $login=$user->name;
         if ($se == 'MCD') {
             $user = User::find($request->user()->id);
             $data = data::where('plan_id', "airtime")->get();
-            $wallet = wallet::where('username', $user->username)->first();
+//            $wallet = wallet::where('username', $user->username)->first();
 
-            return view('airtime', compact('user', 'data', 'wallet'));
+            return view('airtime', compact('user', 'data'));
         } elseif ($se == 'Honor'){
             return view('airtime1');
 
