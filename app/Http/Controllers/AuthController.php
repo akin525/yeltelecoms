@@ -263,7 +263,7 @@ $login=$user->name;
             $data = data::where('plan_id', "airtime")->get();
 //            $wallet = wallet::where('username', $user->username)->first();
 
-            return view('airtime', compact('user', 'data', 'wallet'));
+            return view('airtime', compact('user', 'data'));
         } elseif ($se == 'Honor'){
             return view('airtime1');
 
