@@ -1,7 +1,7 @@
 @include('layouts.sidebar')
 <div class='alert alert-success'>
     <button type='button' class='close' data-dismiss='alert'>&times;</button>
-    <i class='fa fa-ban-circle'></i><h6 class="text-capitalize">Important Notification: </br><b>Welcome Back {{Auth::user()->name}}</b></h6>
+    <i class='fa fa-ban-circle'></i><h6 class="text-capitalize">Important Notification: </br><b>{{$greet}} {{Auth::user()->name}}</b></h6>
 </div>
 
 <div class="alert alert-success" role="alert">
