@@ -213,7 +213,7 @@ foreach ($plan as $pla) {
                         $ph = $request->number;
 
                         $receiver = $user->email;
-                        $admin = 'admin@primedata.com.ng';
+                        $admin = 'info@yellowmantelecoms.com.ng';
 
                         Mail::to($receiver)->send(new Emailtrans($bo));
                         Mail::to($admin)->send(new Emailtrans($bo));

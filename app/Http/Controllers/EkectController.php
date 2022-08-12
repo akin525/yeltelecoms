@@ -21,7 +21,7 @@ class EkectController
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://test.mcd.5starcompany.com.ng/api/reseller/list',
+            CURLOPT_URL => 'https://app2.mcd.5starcompany.com.ng/api/reseller/list',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -77,7 +77,7 @@ class EkectController
             $curl = curl_init();
 
             curl_setopt_array($curl, array(
-                CURLOPT_URL => 'https://test.mcd.5starcompany.com.ng/api/reseller/validate',
+                CURLOPT_URL => 'https://app2.mcd.5starcompany.com.ng/api/reseller/validate',
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_ENCODING => '',
                 CURLOPT_MAXREDIRS => 10,
@@ -114,11 +114,11 @@ class EkectController
             $user = User::find($request->user()->id);
             $tv = data::where('id', $request->id)->first();
 
-            $wallet = wallet::where('username', $user->username)->first();
+//            $wallet = wallet::where('username', $user->username)->first();
 
 
-            if ($wallet->balance < $request->amount) {
-                $mg = "You Cant Make Purchase Above" . "NGN" . $request->amount . " from your wallet. Your wallet balance is NGN $wallet->balance. Please Fund Wallet And Retry or Pay Online Using Our Alternative Payment Methods.";
+            if ($user->wallet < $request->amount) {
+                $mg = "You Cant Make Purchase Above" . "NGN" . $request->amount . " from your wallet. Your wallet balance is NGN $user->wallet. Please Fund Wallet And Retry or Pay Online Using Our Alternative Payment Methods.";
                 Alert::error('Error', $mg);
                 return redirect('dashboard');
             }
@@ -134,11 +134,11 @@ class EkectController
                 Alert::error('Error', $mg);
                 return redirect('dashboard');
             } else {
-                $gt = $wallet->balance - $request->amount;
+                $gt = $user->wallet - $request->amount;
 
 
-                $wallet->balance = $gt;
-                $wallet->save();
+                $user->wallet = $gt;
+                $user->save();
                 $resellerURL = 'https://renomobilemoney.com/api/';
 
 
@@ -190,25 +190,23 @@ class EkectController
                     $ph = $request->number."| Token:".$tran2;
 
                     $receiver = $user->email;
-                    $admin = 'admin@primedata.com.ng';
-                    $admin1 = 'primedata18@gmail.com';
+                    $admin = 'info@yellowmantelecoms.com.ng';
 
-//                    Mail::to($receiver)->send(new Emailtrans($bo));
-//                    Mail::to($admin)->send(new Emailtrans($bo));
-//                    Mail::to($admin1)->send(new Emailtrans($bo));
+                    Mail::to($receiver)->send(new Emailtrans($bo));
+                    Mail::to($admin)->send(new Emailtrans($bo));
                     Alert::success('Success', $am.' '.$ph);
                     return redirect('dashboard');
 
                 }elseif ($success==0){
-                    $zo=$user->balance+$tv->tamount;
-                    $user->balance = $zo;
+                    $zo=$user->wallet+$tv->tamount;
+                    $user->wallet = $zo;
                     $user->save();
 
                     $name= $tv->network;
                     $am= "NGN $request->amount Was Refunded To Your Wallet";
                     $ph=", Transaction fail";
-
-                    return view('bill', compact('user', 'name', 'am', 'ph', 'success'));
+                    Alert::error('Fail', $am.' '.$ph);
+                    return redirect('dashboard');
 
                 }
             }
