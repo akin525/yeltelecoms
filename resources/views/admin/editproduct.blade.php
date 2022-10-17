@@ -61,11 +61,11 @@
                                                 <input type="hidden" class="form-control"  name="id" value="{{$pro->id}}" required />
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-12">
-                                            <div class="form-group">
-                                                <label>Actual Amount </label>
-                                                <input type="number" name="amount" class="form-control" value="{{$pro->amount}}" readonly/>
-                                            </div>
+{{--                                        <div class="col-md-6 col-12">--}}
+{{--                                            <div class="form-group">--}}
+{{--                                                <label>Actual Amount </label>--}}
+                                                <input type="hidden" name="amount" class="form-control" value="{{$pro->amount}}" readonly/>
+{{--                                            </div>--}}
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
