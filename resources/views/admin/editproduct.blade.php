@@ -73,12 +73,12 @@
                                                 <input type="number" name="tamount" class="form-control" value="{{$pro->tamount}}" required/>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-12">
-                                            <div class="form-group">
-                                                <label>Reseller Amount </label>
-                                                <input type="number" name="ramount" class="form-control" value="{{$pro->ramount}}" required/>
-                                            </div>
-                                        </div>
+{{--                                        <div class="col-md-6 col-12">--}}
+{{--                                            <div class="form-group">--}}
+{{--                                                <label>Reseller Amount </label>--}}
+                                                <input type="hidden" name="ramount" class="form-control" value="{{$pro->ramount}}" required/>
+{{--                                            </div>--}}
+{{--                                        </div>--}}
                                     </div>
                             </div>
 
